@@ -60,7 +60,6 @@ class ToxicForm extends React.Component {
       const users = this.state.users;
       const selectedUserInput = document.querySelector(`input[value="${selectedUser}"]`);
       const selectedAmountButton = document.querySelector(`button[value="${selectedAmount}"]`);
-      console.log(selectedAmountButton)
       selectedUserInput.parentElement.classList.remove('user-selected')
       selectedAmountButton.classList.remove('amount-selected')
       selectedUserInput.checked = false;
@@ -89,7 +88,7 @@ class ToxicForm extends React.Component {
     render() {
       return (
         <form>
-          <p>Total debt: {this.state.totalAmount} €</p>
+          <p id='totalAmount'>Total debt: {this.state.totalAmount} €</p>
           <p>Please select the toxic user:</p>
           <User users={this.state.users} handleUserClick={this.handleUserClick} />
           <Money handleAmountClick={this.handleAmountClick} />
