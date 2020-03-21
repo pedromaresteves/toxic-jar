@@ -2,6 +2,7 @@ import React from 'react';
 import '../App.css';
 import User from './User'
 import Money from './Money'
+import Modal from './Modal'
 
 class ToxicForm extends React.Component {
     constructor(props) {
@@ -28,12 +29,15 @@ class ToxicForm extends React.Component {
         selectedUser: null,
         selectedAmount: null,
         totalAmount: 0,
-        disableSubmitBtn: true
+        disableSubmitBtn: true,
+        isModalOpen: false
       }
+
       this.handleUserClick = this.handleUserClick.bind(this);
       this.handleAmountClick = this.handleAmountClick.bind(this);
       this.handleInsertBtn = this.handleInsertBtn.bind(this);
       this.enableSubmit = this.enableSubmit.bind(this);
+      this.toggleModal = this.toggleModal.bind(this);
     }
 
     handleUserClick(data){
@@ -85,10 +89,21 @@ class ToxicForm extends React.Component {
       })
     }
 
+    toggleModal(e){
+      e.preventDefault();
+      this.setState({
+        isModalOpen: !this.state.isModalOpen
+      });
+    }
+
     render() {
       return (
         <form>
-          <p id='totalAmount'>Total debt: {this.state.totalAmount} €</p>
+          <h1 id='totalAmount'>Total debt: {this.state.totalAmount} €</h1>
+          <button id='moreInfo' onClick={this.toggleModal}><small>Click to see more info</small></button>
+          <Modal show={this.state.isModalOpen}
+            onClose={this.toggleModal} userData={this.state.users}>
+          </Modal>
           <p>Please select the toxic user:</p>
           <User users={this.state.users} handleUserClick={this.handleUserClick} />
           <Money handleAmountClick={this.handleAmountClick} />
