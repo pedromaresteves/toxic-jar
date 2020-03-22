@@ -41,6 +41,16 @@ class App extends React.Component {
       this.toggleModal = this.toggleModal.bind(this);
     }
 
+  callAPI() {
+      fetch("/testAPI")
+          .then(res => res.text())
+          .then(res => this.setState({ apiResponse: res }, ()=>{console.log(this.state.apiResponse)}));
+  }
+  
+  componentWillMount() {
+      this.callAPI();
+  }
+
     handleUserClick(data){
       this.setState({
         selectedUser: data
