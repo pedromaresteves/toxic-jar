@@ -1,9 +1,9 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
-import ToxicForm from '../components/ToxicForm';
+import App from '../components/App';
 
 test('After clicking both in a user and in an amount button, the submit button is enabled', ()=>{
-    const { container } = render(<ToxicForm />);
+    const { container } = render(<App />);
     const firstUserInput = container.querySelectorAll('.users div')[0].children[0];
     const firstMoneyBtn = container.querySelector('.money button');
     const submitBtn = container.querySelector('#sendButton');
@@ -15,7 +15,7 @@ test('After clicking both in a user and in an amount button, the submit button i
 });
 
 test('After clicking both in an amount button and then in a user, the submit button is enabled', ()=>{
-    const { container } = render(<ToxicForm />);
+    const { container } = render(<App />);
     const firstUserInput = container.querySelectorAll('.users div')[0].children[0];
     const firstMoneyBtn = container.querySelector('.money button');
     const submitBtn = container.querySelector('#sendButton');
@@ -27,7 +27,7 @@ test('After clicking both in an amount button and then in a user, the submit but
 });
 
 test('After clicking submit, all added styles from clicking form items are removed and sendbutton is disabled', ()=>{
-    const { container } = render(<ToxicForm />);
+    const { container } = render(<App />);
     const firstUser = container.querySelectorAll('.users div')[0];
     const firstUserInput =firstUser.children[0];
     const firstMoneyBtn = container.querySelector('.money button');
@@ -45,7 +45,7 @@ test('After clicking submit, all added styles from clicking form items are remov
 });
 
 test('After adding an amount, we update the Total Amount Value', ()=>{
-    const { container } = render(<ToxicForm />);
+    const { container } = render(<App />);
     const firstUserInput = container.querySelectorAll('.users div')[0].children[0];
     const firstMoneyBtn = container.querySelector('.money button');
     const submitBtn = container.querySelector('#sendButton');

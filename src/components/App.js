@@ -5,7 +5,7 @@ import User from './User'
 import Money from './Money'
 import Modal from './Modal'
 
-class ToxicForm extends React.Component {
+class App extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
@@ -120,7 +120,7 @@ class ToxicForm extends React.Component {
     }
   }
 
-export default ToxicForm;
+export default App;
 
 
 function checkSubmitBtnState(selUser, selAmount){
