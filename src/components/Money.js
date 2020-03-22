@@ -13,9 +13,9 @@ function Money(props) {
     }
     return(
     <div className='money'>
-        <button onClick={handleClick} value='0.25'>0,25€</button>
-        <button onClick={handleClick} value='0.5'>0,50€</button>
-        <button onClick={handleClick} value='1'>1€</button>
+        <button onClick={handleClick} value='0.25'>0.25€</button>
+        <button onClick={handleClick} value='0.5'>0.50€</button>
+        <button onClick={handleClick} value='1'>1.00€</button>
     </div>
     )
   }

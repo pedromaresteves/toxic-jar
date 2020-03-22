@@ -1,4 +1,5 @@
 import React from 'react';
+import logo from '../logo.svg';
 import '../App.css';
 import User from './User'
 import Money from './Money'
@@ -98,19 +99,23 @@ class ToxicForm extends React.Component {
 
     render() {
       return (
-        <form>
-          <h1 id='totalAmount'>Total debt: {this.state.totalAmount} €</h1>
-          <button id='moreInfo' onClick={this.toggleModal}><small>Click to see more info</small></button>
-          <Modal show={this.state.isModalOpen}
-            onClose={this.toggleModal} userData={this.state.users}>
-          </Modal>
-          <p>Please select the toxic user:</p>
-          <User users={this.state.users} handleUserClick={this.handleUserClick} />
-          <Money handleAmountClick={this.handleAmountClick} />
-          <div>
-            <button id='sendButton' onClick={this.handleInsertBtn} disabled={this.state.disableSubmitBtn}>Submit</button>
-          </div>
-        </form>
+        <div className="App">
+          <img src={logo} className="App-logo" alt="logo" />
+          <h1>QA TEAM</h1>
+          <form>
+            <h1 id='totalAmount'>Total debt: {this.state.totalAmount} €</h1>
+            <button id='moreInfo' onClick={this.toggleModal}><small>Click to see more info</small></button>
+            <Modal show={this.state.isModalOpen}
+              onClose={this.toggleModal} userData={this.state.users}>
+            </Modal>
+            <p>Please select the toxic user:</p>
+            <User users={this.state.users} handleUserClick={this.handleUserClick} />
+            <Money handleAmountClick={this.handleAmountClick} />
+            <div>
+              <button id='sendButton' onClick={this.handleInsertBtn} disabled={this.state.disableSubmitBtn}>Submit</button>
+            </div>
+          </form>
+        </div>
       );
     }
   }

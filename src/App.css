@@ -3,7 +3,7 @@
 }
 
 .App-logo {
-  height: 40vmin;
+  height: 10vmin;
   pointer-events: none;
 }
 
@@ -29,24 +29,71 @@
 }
 
 .users{
-  list-style-type: none;
+  font-size:1.2em;
+  margin-bottom: 20px;
+  z-index: -1
 }
 
 .modalUserList{
+  font-size:1.2em;
   padding-left: 0;
   list-style-type: none;
 }
 
+#totalAmount{
+  margin-bottom: 5px;
+}
+
+#moreInfo {
+	background-color:#57caff;
+	border-radius:14px;
+	border:1px solid #41b8eb;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	padding:7px 31px;
+	text-decoration:none;
+	text-shadow:0px 1px 3px #2f6627;
+}
+#moreInfo:hover {
+	background-color:#8cddff;
+}
+
+.money button {
+	border-radius:5px;
+	border:1px solid black;
+	cursor:pointer;
+  font-size:1.2em;
+  width:4em;
+  margin:15px 10px 20px 10px;
+  outline: none;
+}
+.money button:hover {
+	transform: scale(1.1, 1.1);
+}
+.money button:active {
+	position:relative;
+	top:1px;
+}
+
 .user-selected{
-  color:red;
+  font-size: 110%;
 }
 
 .amount-selected{
-  color:red;
+  transform: scale(1.11, 1.11);
+  background-color: #e7f1f5;
 }
 
-#totalAmount{
-  margin-bottom: 0;
+#sendButton{
+  border-radius:5px;
+	border:1px solid black;
+	cursor:pointer;
+  width:5em;
+  margin:10px 10px;
+  outline: none;
+  font-size:1.8em;
 }
 
 @keyframes App-logo-spin {
