@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/toxic-jar/static/css/main.af3aee53.chunk.css",
+    "main.js": "/toxic-jar/static/js/main.aa7e73f4.chunk.js",
+    "main.js.map": "/toxic-jar/static/js/main.aa7e73f4.chunk.js.map",
+    "runtime-main.js": "/toxic-jar/static/js/runtime-main.137ab8bd.js",
+    "runtime-main.js.map": "/toxic-jar/static/js/runtime-main.137ab8bd.js.map",
+    "static/js/2.260e9050.chunk.js": "/toxic-jar/static/js/2.260e9050.chunk.js",
+    "static/js/2.260e9050.chunk.js.map": "/toxic-jar/static/js/2.260e9050.chunk.js.map",
+    "index.html": "/toxic-jar/index.html",
+    "precache-manifest.6934cad236dacc95db83d1daf48d0fc1.js": "/toxic-jar/precache-manifest.6934cad236dacc95db83d1daf48d0fc1.js",
+    "service-worker.js": "/toxic-jar/service-worker.js",
+    "static/css/main.af3aee53.chunk.css.map": "/toxic-jar/static/css/main.af3aee53.chunk.css.map",
+    "static/js/2.260e9050.chunk.js.LICENSE.txt": "/toxic-jar/static/js/2.260e9050.chunk.js.LICENSE.txt",
+    "static/media/logo.svg": "/toxic-jar/static/media/logo.5d5d9eef.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.137ab8bd.js",
+    "static/js/2.260e9050.chunk.js",
+    "static/css/main.af3aee53.chunk.css",
+    "static/js/main.aa7e73f4.chunk.js"
+  ]
+}
