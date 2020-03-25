@@ -32,7 +32,7 @@ function Modal(props) {
           <h2>This is how much each of you pieces of shit owe:</h2>
           <ul className='modalUserList'>
             {props.userData.map((item, key) => {
-                return <li key={key}>{item.name} - {item.debt.toFixed(2)} €</li>
+                return <li key={key}>{item.userName} - {item.debt.toFixed(2)} €</li>
             })}
           </ul>
           <div className='footer'>

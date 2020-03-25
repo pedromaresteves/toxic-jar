@@ -14,7 +14,7 @@ function User(props) {
       return(
       <div className='users'>
           {props.users.map((item, key) => {
-              return <div className='test' key={key}><input type='radio' id={key} name='user' value={item.name} onClick={handleClick}/><label htmlFor={key}>{item.name}</label></div>
+              return <div className='test' key={key}><input type='radio' id={key} name='user' value={item.userName} onClick={handleClick}/><label htmlFor={key}>{item.userName}</label></div>
           })}
       </div>
       )

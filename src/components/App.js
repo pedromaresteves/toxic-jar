@@ -4,29 +4,13 @@ import '../App.css';
 import User from './User'
 import Money from './Money'
 import Modal from './Modal'
+import { getUsers } from '../firebase/firestoreCalls';
 
 class App extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
-        users : [
-            {
-                name: `David Cozar`,
-                debt: 0
-            },
-            {
-                name: `Pedro Marques`,
-                debt: 0
-            },
-            {
-                name: `Rafael Casado`,
-                debt: 0
-            },
-            {
-                name: `Raúl 'El Papo' Hernandez`,
-                debt: 0
-            }
-        ],
+        users : [],
         selectedUser: null,
         selectedAmount: null,
         totalAmount: 0,
@@ -40,15 +24,15 @@ class App extends React.Component {
       this.enableSubmit = this.enableSubmit.bind(this);
       this.toggleModal = this.toggleModal.bind(this);
     }
-
-  callAPI() {
-      fetch("/testAPI")
-          .then(res => res.text())
-          .then(res => this.setState({ apiResponse: res }, ()=>{console.log(this.state.apiResponse)}));
+  
+  getUsersFromDB() {
+    getUsers(result => {
+      this.setState({users: result})
+    })
   }
   
-  componentWillMount() {
-      this.callAPI();
+  componentDidMount() {
+    this.getUsersFromDB();
   }
 
     handleUserClick(data){
@@ -79,7 +63,7 @@ class App extends React.Component {
       selectedAmountButton.classList.remove('amount-selected')
       selectedUserInput.checked = false;
       users.forEach(user => {
-        if(user.name === selectedUser){
+        if(user.userName === selectedUser){
           user.debt += selectedAmount;
           totalAmount += selectedAmount;
         }
@@ -94,7 +78,7 @@ class App extends React.Component {
     }
 
     enableSubmit(){
-      const result = checkSubmitBtnState(this.state.selectedUser, this.state.selectedAmount);
+      const result = shouldSubmitBtnRemainDisabled(this.state.selectedUser, this.state.selectedAmount);
       this.setState({
         disableSubmitBtn: result
       })
@@ -130,10 +114,13 @@ class App extends React.Component {
     }
   }
 
-export default App;
 
-
-function checkSubmitBtnState(selUser, selAmount){
+function shouldSubmitBtnRemainDisabled(selUser, selAmount){
   if(selUser && selAmount) return false;
   return true;
 }
+
+export {
+  App,
+  shouldSubmitBtnRemainDisabled
+};
