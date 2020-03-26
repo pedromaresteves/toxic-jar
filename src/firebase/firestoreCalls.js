@@ -18,7 +18,23 @@ function getUsers(callback) {
       });
     }
 
+  function clearDebt(users) {
+    const userNames = users.map(item => item.userName);
+    db.collection('prueba').get().then((querySnapshot) => {
+      querySnapshot.docs.forEach((doc) => {
+        userNames.forEach(item => {
+          if(doc.data().userName === item){
+            const userToBeCleared = db.collection('prueba').doc(doc.id);
+            userToBeCleared.update({debt: 0})
+          }
+        });
+
+      });
+    });
+  }
+
 export {
     getUsers,
-    updateUsers
+    updateUsers,
+    clearDebt
 }

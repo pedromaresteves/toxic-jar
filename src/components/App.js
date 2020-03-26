@@ -4,7 +4,7 @@ import '../App.css';
 import User from './User'
 import Money from './Money'
 import Modal from './Modal'
-import { getUsers, updateUsers } from '../firebase/firestoreCalls';
+import { getUsers, updateUsers, clearDebt } from '../firebase/firestoreCalls';
 
 class App extends React.Component {
     constructor(props) {
@@ -23,6 +23,7 @@ class App extends React.Component {
       this.handleInsertBtn = this.handleInsertBtn.bind(this);
       this.enableSubmit = this.enableSubmit.bind(this);
       this.toggleModal = this.toggleModal.bind(this);
+      this.handleClearClick = this.handleClearClick.bind(this);
     }
   
   componentDidMount() {
@@ -93,14 +94,27 @@ class App extends React.Component {
       });
     }
 
+    handleClearClick(e){
+      e.preventDefault();
+      clearDebt(this.state.users);
+      getUsers(result => {
+        let totalAmount = 0;
+        this.setState({
+          users: result,
+          totalAmount: totalAmount
+        })
+      });
+    }
+
     render() {
       return (
         <div className="App">
           <img src={logo} className="App-logo" alt="logo" />
           <h1>QA TEAM</h1>
+          <button id='moreInfo' onClick={this.toggleModal}><small>Click to see more info</small></button>
           <form>
             <h1 id='totalAmount'>Total debt: {this.state.totalAmount.toFixed(2)} €</h1>
-            <button id='moreInfo' onClick={this.toggleModal}><small>Click to see more info</small></button>
+            <button id='clearAllDebt' onClick={this.handleClearClick}><small>Clear all debt</small></button>
             <Modal show={this.state.isModalOpen}
               onClose={this.toggleModal} userData={this.state.users}>
             </Modal>

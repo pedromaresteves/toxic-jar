@@ -28,7 +28,12 @@ function updateUsers(userName, debt) {
     return;
 }
 
+function clearDebt(users) {
+    return;
+  }
+
 export {
     getUsers,
-    updateUsers
+    updateUsers,
+    clearDebt
 }
