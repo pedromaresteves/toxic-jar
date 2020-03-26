@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "ef682f2d6b101c789d2e08de09f29726",
+    "revision": "dbe202b921b0094fec064ed1a7476f6e",
     "url": "/toxic-jar/index.html"
   },
   {
-    "revision": "5eb4390fb845ab7c4d9c",
-    "url": "/toxic-jar/static/css/main.55722c5d.chunk.css"
+    "revision": "331cf7cdfe46cc3ef06b",
+    "url": "/toxic-jar/static/css/main.a94f5f42.chunk.css"
   },
   {
-    "revision": "9624ff897ec7c0ae7689",
-    "url": "/toxic-jar/static/js/2.a3beeaea.chunk.js"
+    "revision": "d290690c4173b272bbea",
+    "url": "/toxic-jar/static/js/2.2468ca6a.chunk.js"
   },
   {
     "revision": "4c6b4302c8e4ea71915df2de809f5a34",
-    "url": "/toxic-jar/static/js/2.a3beeaea.chunk.js.LICENSE.txt"
+    "url": "/toxic-jar/static/js/2.2468ca6a.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "5eb4390fb845ab7c4d9c",
-    "url": "/toxic-jar/static/js/main.bc9460aa.chunk.js"
+    "revision": "331cf7cdfe46cc3ef06b",
+    "url": "/toxic-jar/static/js/main.987223a1.chunk.js"
   },
   {
     "revision": "b416083351d2f05fcb74",
