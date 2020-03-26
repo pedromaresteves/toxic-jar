@@ -24,6 +24,11 @@ function getUsers(callback) {
     callback(mockUsers);
   }
 
+function updateUsers(userName, debt) {
+    return;
+}
+
 export {
-    getUsers
+    getUsers,
+    updateUsers
 }

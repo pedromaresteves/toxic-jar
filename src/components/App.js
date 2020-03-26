@@ -4,7 +4,7 @@ import '../App.css';
 import User from './User'
 import Money from './Money'
 import Modal from './Modal'
-import { getUsers } from '../firebase/firestoreCalls';
+import { getUsers, updateUsers } from '../firebase/firestoreCalls';
 
 class App extends React.Component {
     constructor(props) {
@@ -25,14 +25,15 @@ class App extends React.Component {
       this.toggleModal = this.toggleModal.bind(this);
     }
   
-  getUsersFromDB() {
-    getUsers(result => {
-      this.setState({users: result})
-    })
-  }
-  
   componentDidMount() {
-    this.getUsersFromDB();
+    getUsers(result => {
+      let totalAmount = 0;
+      result.forEach(item => totalAmount += item.debt)
+      this.setState({
+        users: result,
+        totalAmount: totalAmount
+      })
+    });
   }
 
     handleUserClick(data){
@@ -68,9 +69,10 @@ class App extends React.Component {
           totalAmount += selectedAmount;
         }
       });
+      updateUsers(selectedUser, selectedAmount)
       this.setState({
         users: users,
-        totalAmount: totalAmount.toFixed(2),
+        totalAmount: totalAmount,
         selectedUser: null,
         selectedAmount: null,
         disableSubmitBtn: true
@@ -97,7 +99,7 @@ class App extends React.Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1>QA TEAM</h1>
           <form>
-            <h1 id='totalAmount'>Total debt: {this.state.totalAmount} €</h1>
+            <h1 id='totalAmount'>Total debt: {this.state.totalAmount.toFixed(2)} €</h1>
             <button id='moreInfo' onClick={this.toggleModal}><small>Click to see more info</small></button>
             <Modal show={this.state.isModalOpen}
               onClose={this.toggleModal} userData={this.state.users}>
