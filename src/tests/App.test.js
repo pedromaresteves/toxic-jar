@@ -4,7 +4,7 @@ import { App, shouldSubmitBtnRemainDisabled } from '../components/App';
 import '../firebase/__mocks__/firestoreCalls';
 jest.mock('../firebase/firestoreCalls')
 
-let container, firstUser, firstUserInput, firstMoneyBtn, submitBtn;
+let container, firstUser, firstUserInput, firstMoneyBtn, submitBtn, clearDebtBtn;
 
 beforeEach(async ()=>{
     container = render(<App />).container;
@@ -12,6 +12,7 @@ beforeEach(async ()=>{
     firstUserInput = await waitForElement(() => container.querySelectorAll('.users div')[0].children[0]);
     firstMoneyBtn = await waitForElement(() => container.querySelector('.money button'));
     submitBtn = await waitForElement(() => container.querySelector('#sendButton')); 
+    clearDebtBtn = await waitForElement(() => container.querySelector('#clearAllDebt')); 
 });
 
 test('After clicking both in a user and in an amount button, the submit button is enabled', ()=>{
@@ -43,12 +44,14 @@ test('After clicking submit, all added styles from clicking form items are remov
     });
 });
 
-test('After adding an amount, we update the Total Amount Value', ()=>{
+test('Test adding amount to total and clearing total.', ()=>{
     const totalAmountP = container.querySelector('#totalAmount');
     fireEvent.click(firstUserInput);
     fireEvent.click(firstMoneyBtn);
     fireEvent.click(submitBtn);
     expect(totalAmountP.innerHTML).toEqual(expect.stringMatching(Number(firstMoneyBtn.value).toFixed(2)));  
+    fireEvent.click(clearDebtBtn);
+    expect(totalAmountP.innerHTML).toEqual(expect.stringMatching('0.00'));  
 });
 
 test('Test fn checkSubmitBtnState. If any of the arguments is false, return true', ()=>{
