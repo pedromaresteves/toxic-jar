@@ -94,16 +94,21 @@ class App extends React.Component {
       });
     }
 
+    clearUserDebt(users){
+      clearDebt(users);
+      users.forEach(user => {
+        user.debt = 0;
+      });
+      const totalAmount = 0;
+      this.setState({
+        users: users,
+        totalAmount: totalAmount
+      })
+    }
+
     handleClearClick(e){
       e.preventDefault();
-      clearDebt(this.state.users);
-      getUsers(result => {
-        let totalAmount = 0;
-        this.setState({
-          users: result,
-          totalAmount: totalAmount
-        })
-      });
+      this.clearUserDebt(this.state.users)
     }
 
     render() {
