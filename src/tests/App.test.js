@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, fireEvent, waitForElement  } from '@testing-library/react';
 import { App, shouldSubmitBtnRemainDisabled } from '../components/App';
-import '../firebase/__mocks__/firestoreCalls';
+//require('../firebase/__mocks__/firestoreCalls');
 jest.mock('../firebase/firestoreCalls')
 
 let container, firstUser, firstUserInput, secondUserInput, MoneyBtn25, MoneyBtn50, submitBtn, clearDebtBtn;

@@ -3,7 +3,7 @@ import '../App.css';
 
 function User(props) {
     function handleClick(e){
-      const selectedUser = e.target.value;
+      const selectedUserName = e.target.value;
       const usersDivs = document.querySelectorAll('.users div');
       const selectedInputParent = e.target.parentNode;
       usersDivs.forEach(item => {
@@ -12,12 +12,12 @@ function User(props) {
       })
       selectedInputParent.classList.add('user-selected');
       selectedInputParent.children[2].classList.remove('hide')
-      props.handleUserClick(selectedUser)
+      props.handleUserClick(selectedUserName)
     }
 
     function handleClearClick(e){
-      const selectedUser = e.target.parentNode.parentNode.parentNode.children[0].value;
-      props.handleClearClick(e, selectedUser);
+      const selectedUserName = e.target.parentNode.parentNode.parentNode.children[0].value;
+      props.handleClearClick(e, selectedUserName);
     }
 
       return(
@@ -26,7 +26,7 @@ function User(props) {
               return (<div className='test' key={key}>
                 <input type='radio' id={key} name='user' value={item.userName} onClick={handleClick}/>
                 <label htmlFor={key}>{item.userName}</label>
-                {item.debt ? <p className='userDebt hide'><small>This fat fuck owes {item.debt.toFixed(2)} € <button className='clearUserDebt' onClick={handleClearClick}>Clear Debt</button></small></p> : <p className='empty'>Po</p>}
+                {item.debt ? <p className='userDebt hide'><small>This fat fuck owes {item.debt.toFixed(2)} € <button className='clearUserDebt' onClick={handleClearClick}>Clear Debt</button></small></p> : <p className='empty'></p>}
                 </div>)
           })}
       </div>

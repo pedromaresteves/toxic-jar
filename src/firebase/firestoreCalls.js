@@ -1,4 +1,5 @@
-import { db } from './init-firebase';
+const initFirebase = require('./init-firebase');
+const db = initFirebase.db;
 
 function getUsers(callback) {
     const usersFromDB = [];
@@ -31,9 +32,9 @@ function getUsers(callback) {
       });
     });
   }
-
-export {
-    getUsers,
-    updateUsers,
-    clearDebt
+  
+module.exports = {
+  getUsers: getUsers,
+  updateUsers: updateUsers,
+  clearDebt: clearDebt
 }

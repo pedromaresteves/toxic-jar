@@ -4,14 +4,14 @@ import '../App.css';
 import User from './User'
 import Money from './Money'
 import Modal from './Modal'
-import { getUsers, updateUsers, clearDebt } from '../firebase/firestoreCalls';
+const firestore = require('../firebase/firestoreCalls')
 
 class App extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
         users : [],
-        selectedUser: null,
+        selectedUserName: null,
         selectedAmount: null,
         totalAmount: 0,
         disableSubmitBtn: true,
@@ -27,7 +27,7 @@ class App extends React.Component {
     }
   
   componentDidMount() {
-    getUsers(result => {
+    firestore.getUsers(result => {
       let totalAmount = 0;
       result.forEach(item => totalAmount += item.debt)
       this.setState({
@@ -39,7 +39,7 @@ class App extends React.Component {
 
     handleUserClick(data){
       this.setState({
-        selectedUser: data
+        selectedUserName: data
       }, ()=>{
         this.enableSubmit();
       });
@@ -55,33 +55,33 @@ class App extends React.Component {
 
     handleInsertBtn(e){
       e.preventDefault();
-      const selectedUser = this.state.selectedUser;
+      const selectedUserName = this.state.selectedUserName;
       const selectedAmount = Number(this.state.selectedAmount);
       let totalAmount = Number(this.state.totalAmount);
       const users = this.state.users;
-      const selectedUserInput = document.querySelector(`input[value="${selectedUser}"]`);
+      const selectedUserInput = document.querySelector(`input[value="${selectedUserName}"]`);
       const selectedAmountButton = document.querySelector(`button[value="${selectedAmount}"]`);
       selectedUserInput.parentElement.classList.remove('user-selected')
       selectedAmountButton.classList.remove('amount-selected')
       selectedUserInput.checked = false;
       users.forEach(user => {
-        if(user.userName === selectedUser){
+        if(user.userName === selectedUserName){
           user.debt += selectedAmount;
           totalAmount += selectedAmount;
         }
       });
-      updateUsers(selectedUser, selectedAmount)
+      firestore.updateUsers(selectedUserName, selectedAmount)
       this.setState({
         users: users,
         totalAmount: totalAmount,
-        selectedUser: null,
+        selectedUserName: null,
         selectedAmount: null,
         disableSubmitBtn: true
       });
     }
 
     enableSubmit(){
-      const result = shouldSubmitBtnRemainDisabled(this.state.selectedUser, this.state.selectedAmount);
+      const result = shouldSubmitBtnRemainDisabled(this.state.selectedUserName, this.state.selectedAmount);
       this.setState({
         disableSubmitBtn: result
       })
@@ -94,36 +94,34 @@ class App extends React.Component {
       });
     }
 
-    clearUserDebt(selectedUser){
+    clearUserDebt(selectedUserName){
       let totalAmount = this.state.totalAmount;
       const users = this.state.users;
-      if(selectedUser){
-        clearDebt(selectedUser);
-        users.forEach(user => {
-          if(user.userName === selectedUser[0].userName){
+      var arrToSend = (selectedUserName) ? selectedUserName : users;
+      firestore.clearDebt(arrToSend);
+      users.forEach(user =>{
+        if(arrToSend.length > 1){
+          totalAmount -= user.debt;
+          user.debt = 0;
+        } else{
+          if(user.userName === selectedUserName[0].userName){
             totalAmount -= user.debt;
             user.debt = 0;
           }
-        });
-      } else{
-        clearDebt(users);
-        users.forEach(user => {
-            totalAmount -= user.debt;
-            user.debt = 0;
-        });
-      }
+        }
+      });
       this.setState({
         users: users,
         totalAmount: totalAmount
       })
     }
 
-    handleClearClick(e, selectedUser){
+    handleClearClick(e, selectedUserName){
       e.preventDefault();
       const users = this.state.users;
-      if(!selectedUser) return this.clearUserDebt();
+      if(!selectedUserName) return this.clearUserDebt();
       users.forEach(user => {
-        if(user.userName === selectedUser){
+        if(user.userName === selectedUserName){
           return this.clearUserDebt([user]);
         }
       });

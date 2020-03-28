@@ -32,8 +32,8 @@ function clearDebt(users) {
     return;
   }
 
-export {
-    getUsers,
-    updateUsers,
-    clearDebt
-}
+  module.exports = {
+    getUsers: getUsers,
+    updateUsers: updateUsers,
+    clearDebt: clearDebt
+  }
