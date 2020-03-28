@@ -105,6 +105,7 @@ h1{
 
 .user-selected{
   font-size: 110%;
+  color: #713dff;
 }
 
 .amount-selected{
@@ -120,6 +121,26 @@ h1{
   margin:10px 10px;
   outline: none;
   font-size:1.8em;
+}
+
+.clearUserDebt{
+  border-radius:5px;
+	border:1px solid black;
+	cursor:pointer;
+  margin:10px 10px;
+  outline: none;
+}
+
+.userDebt{
+  margin: 0;
+}
+
+.hide {
+  display: none;
+}
+
+.empty{
+  display: none;
 }
 
 @keyframes App-logo-spin {

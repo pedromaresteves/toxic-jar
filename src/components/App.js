@@ -15,7 +15,7 @@ class App extends React.Component {
         selectedAmount: null,
         totalAmount: 0,
         disableSubmitBtn: true,
-        isModalOpen: false
+        isModalOpen: false,
       }
 
       this.handleUserClick = this.handleUserClick.bind(this);
@@ -94,21 +94,39 @@ class App extends React.Component {
       });
     }
 
-    clearUserDebt(users){
-      clearDebt(users);
-      users.forEach(user => {
-        user.debt = 0;
-      });
-      const totalAmount = 0;
+    clearUserDebt(selectedUser){
+      let totalAmount = this.state.totalAmount;
+      const users = this.state.users;
+      if(selectedUser){
+        clearDebt(selectedUser);
+        users.forEach(user => {
+          if(user.userName === selectedUser[0].userName){
+            totalAmount -= user.debt;
+            user.debt = 0;
+          }
+        });
+      } else{
+        clearDebt(users);
+        users.forEach(user => {
+            totalAmount -= user.debt;
+            user.debt = 0;
+        });
+      }
       this.setState({
         users: users,
         totalAmount: totalAmount
       })
     }
 
-    handleClearClick(e){
+    handleClearClick(e, selectedUser){
       e.preventDefault();
-      this.clearUserDebt(this.state.users)
+      const users = this.state.users;
+      if(!selectedUser) return this.clearUserDebt();
+      users.forEach(user => {
+        if(user.userName === selectedUser){
+          return this.clearUserDebt([user]);
+        }
+      });
     }
 
     render() {
@@ -124,7 +142,7 @@ class App extends React.Component {
               onClose={this.toggleModal} userData={this.state.users}>
             </Modal>
             <p>Please select the toxic user:</p>
-            <User users={this.state.users} handleUserClick={this.handleUserClick} />
+            <User users={this.state.users} handleUserClick={this.handleUserClick} handleClearClick={this.handleClearClick}/>
             <Money handleAmountClick={this.handleAmountClick} />
             <div>
               <button id='sendButton' onClick={this.handleInsertBtn} disabled={this.state.disableSubmitBtn}>Submit</button>

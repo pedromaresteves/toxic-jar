@@ -6,15 +6,28 @@ function User(props) {
       const selectedUser = e.target.value;
       const usersDivs = document.querySelectorAll('.users div');
       const selectedInputParent = e.target.parentNode;
-      usersDivs.forEach(item => {item.classList.remove('user-selected')})
-      selectedInputParent.classList.add('user-selected')
+      usersDivs.forEach(item => {
+        item.classList.remove('user-selected')
+        item.children[2].classList.add('hide')
+      })
+      selectedInputParent.classList.add('user-selected');
+      selectedInputParent.children[2].classList.remove('hide')
       props.handleUserClick(selectedUser)
+    }
+
+    function handleClearClick(e){
+      const selectedUser = e.target.parentNode.parentNode.parentNode.children[0].value;
+      props.handleClearClick(e, selectedUser);
     }
 
       return(
       <div className='users'>
           {props.users.map((item, key) => {
-              return <div className='test' key={key}><input type='radio' id={key} name='user' value={item.userName} onClick={handleClick}/><label htmlFor={key}>{item.userName}</label></div>
+              return (<div className='test' key={key}>
+                <input type='radio' id={key} name='user' value={item.userName} onClick={handleClick}/>
+                <label htmlFor={key}>{item.userName}</label>
+                {item.debt ? <p className='userDebt hide'><small>This fat fuck owes {item.debt.toFixed(2)} € <button className='clearUserDebt' onClick={handleClearClick}>Clear Debt</button></small></p> : <p className='empty'>Po</p>}
+                </div>)
           })}
       </div>
       )

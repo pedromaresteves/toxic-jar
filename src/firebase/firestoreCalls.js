@@ -28,7 +28,6 @@ function getUsers(callback) {
             userToBeCleared.update({debt: 0})
           }
         });
-
       });
     });
   }
