@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "8a350f84cd018b64d481db52e70e09db",
+    "revision": "a437f1545ab144ce049135c3b518d9e1",
     "url": "/toxic-jar/index.html"
   },
   {
-    "revision": "1199056dc27dcaf2bff1",
+    "revision": "da65e27b148ce5d4d1b5",
     "url": "/toxic-jar/static/css/main.62e9a731.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/toxic-jar/static/js/2.7f119803.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "1199056dc27dcaf2bff1",
-    "url": "/toxic-jar/static/js/main.e239ada8.chunk.js"
+    "revision": "da65e27b148ce5d4d1b5",
+    "url": "/toxic-jar/static/js/main.585d4de1.chunk.js"
   },
   {
     "revision": "b416083351d2f05fcb74",

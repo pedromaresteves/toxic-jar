@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/toxic-jar/static/css/main.62e9a731.chunk.css",
-    "main.js": "/toxic-jar/static/js/main.e239ada8.chunk.js",
-    "main.js.map": "/toxic-jar/static/js/main.e239ada8.chunk.js.map",
+    "main.js": "/toxic-jar/static/js/main.585d4de1.chunk.js",
+    "main.js.map": "/toxic-jar/static/js/main.585d4de1.chunk.js.map",
     "runtime-main.js": "/toxic-jar/static/js/runtime-main.137ab8bd.js",
     "runtime-main.js.map": "/toxic-jar/static/js/runtime-main.137ab8bd.js.map",
     "static/js/2.7f119803.chunk.js": "/toxic-jar/static/js/2.7f119803.chunk.js",
     "static/js/2.7f119803.chunk.js.map": "/toxic-jar/static/js/2.7f119803.chunk.js.map",
     "index.html": "/toxic-jar/index.html",
-    "precache-manifest.119bd9b11a64e32abdd8ef0440e80b6e.js": "/toxic-jar/precache-manifest.119bd9b11a64e32abdd8ef0440e80b6e.js",
+    "precache-manifest.464ab9949ed4d8e44e20284ddd2364e3.js": "/toxic-jar/precache-manifest.464ab9949ed4d8e44e20284ddd2364e3.js",
     "service-worker.js": "/toxic-jar/service-worker.js",
     "static/css/main.62e9a731.chunk.css.map": "/toxic-jar/static/css/main.62e9a731.chunk.css.map",
     "static/js/2.7f119803.chunk.js.LICENSE.txt": "/toxic-jar/static/js/2.7f119803.chunk.js.LICENSE.txt",
@@ -18,6 +18,6 @@
     "static/js/runtime-main.137ab8bd.js",
     "static/js/2.7f119803.chunk.js",
     "static/css/main.62e9a731.chunk.css",
-    "static/js/main.e239ada8.chunk.js"
+    "static/js/main.585d4de1.chunk.js"
   ]
 }
