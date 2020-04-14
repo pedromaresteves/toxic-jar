@@ -4,15 +4,10 @@ import '../App.css';
 function User(props) {
     function handleClick(e){
       const selectedUserName = e.target.value;
-      const usersDivs = document.querySelectorAll('.users div');
       const selectedInputParent = e.target.parentNode;
-      usersDivs.forEach(item => {
-        item.classList.remove('user-selected')
-        item.children[2].classList.add('hide')
-      })
+      props.handleUserClick(selectedUserName)
       selectedInputParent.classList.add('user-selected');
       selectedInputParent.children[2].classList.remove('hide')
-      props.handleUserClick(selectedUserName)
     }
 
     function handleClearClick(e){
